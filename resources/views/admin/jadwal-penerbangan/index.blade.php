@@ -21,9 +21,10 @@
                             <tr class="text-xs font-semibold tracking-wide text-left text-slate-500 uppercase border-b bg-slate-100 whitespace-nowrap">
                                 <th class="p-4">ID</th>
                                 <th class="p-4">Nama maskapai</th>
-                                <th class="p-4">Jadwal keberangkatan</th>
-                                <th class="p-4">Jadwal pulang</th>
+                                <th class="p-4">Jadwal penerbangan</th>
+                                <th class="p-4">Harga tiket</th>
                                 <th class="p-4">Kelas penerbangan</th>
+                                <th class="p-4">Kursi tersedia</th>
                                 <th class="p-4">Aksi</th>
                             </tr>
                         </thead>
@@ -47,16 +48,27 @@
                                         </div>
                                     </td>
                                     {{-- JADWAL KEBERANGKATAN --}}
-                                    <td class="px-4 py-3 text-sm">
-                                        {{ $schedule->jadwal_keberangkatan }}
+                                    <td class="px-4 py-3 text-sm flex flex-col space-y-1">
+                                        <div class="flex space-x-2">
+                                            <iconify-icon icon="ic:baseline-flight-takeoff" class="text-lg"></iconify-icon>
+                                            <span class="text-xs">{{ $schedule->jadwal_keberangkatan }}</span>
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            <iconify-icon icon="ic:baseline-flight-land" class="text-lg"></iconify-icon>
+                                            <span class="text-xs">{{ $schedule->jadwal_pulang }}</span>
+                                        </div>
                                     </td>
                                     {{-- JADWAL PULANG --}}
                                     <td class="px-4 py-3 text-sm">
-                                        {{ $schedule->jadwal_pulang }}
+                                        {{ number_format($schedule->harga_tiket) }}
                                     </td>
                                     {{-- KELAS PENERBANGAN --}}
                                     <td class="px-4 py-3 text-sm">
                                         {{ $schedule->kelas_penerbangan }}
+                                    </td>
+                                    {{-- KURSI TERSEDIA --}}
+                                    <td class="px-4 py-3 text-sm">
+                                        {{ $schedule->jumlah_kursi }}
                                     </td>
                                     {{-- ACTION BUTTON --}}
                                     <td class="px-4 py-3 text-sm">

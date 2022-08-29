@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderController extends Controller
 {
@@ -34,7 +37,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Order::create([
+            'jadwal_id' => $request->jadwal_id,
+            'nama_pemesan' => $request->nama_pemesan,
+            'kota_asal' => $request->kota_asal,
+            'kota_tujuan' => $request->kota_tujuan,
+            'tanggal_berangkat' => $request->tanggal_berangkat,
+            'tanggal_pulang' => $request->tanggal_pulang,
+            'kelas_penerbangan' => $request->kelas_penerbangan,
+            'jumlah_penumpang' => $request->jumlah_penumpang,
+            'kode_booking' => Str::upper(Str::random(5)) . '-' . Str::upper(Str::random(5)) . '-' . Str::upper(Str::random(5)),
+        ]);
+
+        Alert::success('Berhasil', 'Berhasil memesan penerbangan!');
+
+        return redirect()->route('frontend.index');
     }
 
     /**

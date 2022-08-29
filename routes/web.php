@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\JadwalPenerbanganController;
 use App\Http\Controllers\MaskapaiController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
-Route::post('/search', [FrontendController::class, 'search'])->name('frontend.search-flight');
+Route::post('/search-flight', [FrontendController::class, 'search'])->name('frontend.search');
+Route::post('/booking/create-ticket', [OrderController::class, 'store'])->name('frontend.booking');
+// Route::post('/search-flight', [FrontendController::class, 'searchPage'])->name('frontend.search-flight');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');

@@ -11,10 +11,14 @@ class Jadwal extends Model
 
     protected $fillable = [
         'maskapai_id',
+        'kota_asal',
+        'kota_tujuan',
+        'harga_tiket',
         'jadwal_keberangkatan',
         'jadwal_pulang',
         'nomor_penerbangan',
         'kelas_penerbangan',
+        'jumlah_kursi',
     ];
 
     public function maskapai() {

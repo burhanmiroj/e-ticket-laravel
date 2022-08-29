@@ -56,7 +56,7 @@
                     </div>
                 </div>
             @empty
-                <div class="p-5 mb-4 text-sm text-red-500 bg-red-50 border border-red-500 rounded-lg flex justify-between items-center">                
+                <div class="md:col-span-2 p-5 mb-4 text-sm text-red-500 bg-red-50 border border-red-500 rounded-lg flex justify-between items-center">                
                     <p>Oops! Tidak ada data maskapai</p>
                 </div>
             @endforelse

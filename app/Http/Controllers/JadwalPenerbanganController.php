@@ -44,17 +44,26 @@ class JadwalPenerbanganController extends Controller
     {
         $request->validate([
             'maskapai_id' => 'required',
+            'kota_asal' => 'required',
+            'kota_tujuan' => 'required',
+            'harga_tiket' => 'required',
             'jadwal_keberangkatan' => 'required',
             'jadwal_pulang' => 'required',
+            'kelas_penerbangan' => 'required',
+            'jumlah_kursi' => 'required',
             'kelas_penerbangan' => 'required',
         ]);
         
         Jadwal::create([
             'maskapai_id' => $request->maskapai_id,
+            'kota_asal' => $request->kota_asal,
+            'kota_tujuan' => $request->kota_tujuan,
+            'harga_tiket' => $request->harga_tiket,
             'jadwal_keberangkatan' => $request->jadwal_keberangkatan,
             'jadwal_pulang' => $request->jadwal_pulang,
-            'nomor_penerbangan' => Str::upper(Str::random(2)) . '-' . Str::upper(Str::random(5)),
             'kelas_penerbangan' => $request->kelas_penerbangan,
+            'jumlah_kursi' => $request->jumlah_kursi,
+            'nomor_penerbangan' => Str::upper(Str::random(2)) . '-' . Str::upper(Str::random(5)),
         ]);
 
         Alert::success('Berhasil', 'Berhasil menambah jadwal penerbangan!');
@@ -97,6 +106,18 @@ class JadwalPenerbanganController extends Controller
     {
         $schedule = Jadwal::find($id);
 
+        $request->validate([
+            'maskapai_id' => 'required',
+            'kota_asal' => 'required',
+            'kota_tujuan' => 'required',
+            'harga_tiket' => 'required',
+            'jadwal_keberangkatan' => 'required',
+            'jadwal_pulang' => 'required',
+            'kelas_penerbangan' => 'required',
+            'jumlah_kursi' => 'required',
+            'kelas_penerbangan' => 'required',
+        ]);
+        
         if(empty($request->nomor_penerbangan)) {
             $nomorPenerbangan = $schedule->nomor_penerbangan;
         } else {
@@ -105,9 +126,13 @@ class JadwalPenerbanganController extends Controller
 
         Jadwal::where('id', $id)->update([
             'maskapai_id' => $request->maskapai_id,
+            'kota_asal' => $request->kota_asal,
+            'kota_tujuan' => $request->kota_tujuan,
+            'harga_tiket' => $request->harga_tiket,
             'jadwal_keberangkatan' => $request->jadwal_keberangkatan,
             'jadwal_pulang' => $request->jadwal_pulang,
-            'kelas_penerbangan' => $request->jadwal_pulang,
+            'kelas_penerbangan' => $request->kelas_penerbangan,
+            'jumlah_kursi' => $request->jumlah_kursi,
             'nomor_penerbangan' => $nomorPenerbangan,
         ]);
 
