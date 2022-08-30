@@ -23,7 +23,7 @@ return new class extends Migration
             $table->datetime('jadwal_pulang');
             $table->string('nomor_penerbangan');
             $table->string('kelas_penerbangan');
-            $table->string('jumlah_kursi');
+            $table->integer('jumlah_kursi');
             $table->timestamps();
         });
     }
