@@ -87,23 +87,23 @@
                     </span>
                     <input type="number" name="harga_tiket" placeholder="Harga tiket" value="{{ $schedule->harga_tiket }}" class="p-3 placeholder-slate-400 text-slate-600 relative bg-white rounded text-sm focus:outline-none border-slate-300 focus:border-green-1000 w-full pl-10" />
                     @error('harga_tiket')
-                    <span class="text-sm italic text-red-500">{{ $message }}</span>
+                        <span class="text-sm italic text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
             {{-- SINGLE INPUT --}}
             <div class="w-full">
-                <label for="kelas_penerbangan" class="text-sm text-zinc-500 font-semibold">Nama maskapai</label>
+                <label for="kelas_penerbangan" class="text-sm text-zinc-500 font-semibold">Kelas penerbangan</label>
                 <div class="relative flex w-full flex-wrap mt-1">
                     <span class="z-10 h-full leading-snug font-normal text-center text-slate-500 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
                         <iconify-icon icon="simple-icons:ethiopianairlines"></iconify-icon>
                     </span>
                     <select name="kelas_penerbangan" class="p-3 placeholder-slate-400 text-slate-600 relative bg-white rounded text-sm focus:outline-none border-slate-300 focus:border-green-1000 w-full pl-10">
-                        <option selected disabled>-- Pilih maskapai</option>
-                        <option {{ $schedule->kelas_penerbangan ? 'selected' : '' }} value="ekonomi">Ekonomi</option>
-                        <option {{ $schedule->kelas_penerbangan ? 'selected' : '' }} value="premium-ekonomi">Premium Ekonomi</option>
-                        <option {{ $schedule->kelas_penerbangan ? 'selected' : '' }} value="business">Bisnis</option>
-                        <option {{ $schedule->kelas_penerbangan ? 'selected' : '' }} value="first-class">First class</option>
+                        <option selected disabled>-- Pilih kelas</option>
+                        <option {{ $schedule->kelas_penerbangan == 'ekonomi' ? 'selected' : '' }} value="ekonomi">Ekonomi</option>
+                        <option {{ $schedule->kelas_penerbangan == 'premium-ekonomi' ? 'selected' : '' }} value="premium-ekonomi">Premium Ekonomi</option>
+                        <option {{ $schedule->kelas_penerbangan == 'business' ? 'selected' : '' }} value="business">Bisnis</option>
+                        <option {{ $schedule->kelas_penerbangan == 'first-class' ? 'selected' : '' }} value="first-class">First class</option>
                     </select>
                     @error('kelas_penerbangan')
                         <span class="text-sm italic text-red-500">{{ $message }}</span>

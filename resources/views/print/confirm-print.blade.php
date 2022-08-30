@@ -55,44 +55,20 @@
                                         {{ $q->kelas_penerbangan }}
                                     </div>
                                 </td>
-                                {{-- ACTION --}}
-                                <td class="px-4 py-3 text-sm">
-                                    <div class="flex justify-end space-x-2">
-                                        {{-- MASKAPAI --}}
-                                        <input type="hidden" name="maskapai_id" value="{{ $q->maskapai->id }}" />
-                                        {{-- ORDER ID --}}
-                                        <input type="hidden" name="jadwal_id" value="{{ $q->id }}" />
-                                        {{-- KOTA ASAL --}}
-                                        <input type="hidden" name="kota_asal" value="{{ $kota_asal }}" />
-                                        {{-- KOTA TUJUAN --}}
-                                        <input type="hidden" name="kota_tujuan" value="{{ $kota_tujuan }}" />
-                                        {{-- KELAS PENERBANGAn --}}
-                                        <input type="hidden" name="kelas_penerbangan" value="{{ $kelas_penerbangan }}" />
-                                        {{-- TANGGAL BERANGKAT --}}
-                                        <input type="hidden" name="tanggal_berangkat" value="{{ $tanggal_berangkat }}" />
-                                        {{-- TANGGAL PULANG --}}
-                                        <input type="hidden" name="tanggal_pulang" value="{{ $tanggal_pulang }}" />
-                                        {{-- JUMLAH PENUMPANG --}}
-                                        <input type="hidden" name="jumlah_penumpang" value="{{ $jumlah_penumpang }}" />
-                                        <button id="print-btn" type="submit" class="w-full sm:w-auto pr-5 h-12 rounded-md bg-gradient-to-tr from-green-1000 to-green-1100 hover:to-green-1000 text-white flex justify-center md:justify-start items-center">
-                                            <div class="w-12 h-12 grid place-items-center">
-                                                <iconify-icon icon="fa6-regular:file-pdf"></iconify-icon>
-                                            </div>
-                                            <span class="text-sm">Print tiket</span>
-                                        </button>
-                                        {{-- <button type="submit" class="w-32 h-10 transition-all duration-300 bg-green-1000 hover:bg-green-900 focus:ring-2 focus:ring-green-500 flex justify-center items-center text-white rounded-md">
-                                            <iconify-icon icon="ic:baseline-shopping-cart-checkout"></iconify-icon>
-                                            <span class="ml-1">Pesan tiket</span>
-                                        </button> --}}
-                                    </div>
-                                </td>
                             </tr>
                             <input type="hidden" name="harga_tiket" value="{{ $q->harga_tiket }}">
-                            {{-- <input type="hidden" name="order_id" value="{{ $q->jumlah_penumpang }}"> --}}
+                            {{-- KODE PESAN --}}
+                            <tr>
+                                <div class="mt-5 mb-10 text-center">
+                                    <div class="w-full p-3 border rounded-lg max-w-screen-md mx-auto text-xl text-center bg-slate-200">
+                                        <h1>{{ $kode_booking }}</h1>
+                                    </div>
+                                    <span class="text-sm font-semibold text-red-500">Simpan dengan baik, kode ini digunakan untuk check in</span>
+                                </div>
+                            </tr>
                         @empty
                             <p>Oops! Tidak ada penerbangan sesuai pencarian anda</p>
                         @endforelse
-                        {{-- <tr class="text-slate-700 whitespace-nowrap rounded-lg">Total tagihan : Rp. {{ number_format($total_pay) }}</tr> --}}
                     </tbody>
                 </table>
             </div>

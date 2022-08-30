@@ -83,7 +83,9 @@
     {{-- END : HEADER --}}
     {{-- START : MAIN CONTENT --}}
     <div class="px-4">
-        @yield('content')
+        <div class="w-full">
+            @yield('content')
+        </div>
         {{-- FOOTER --}}
         <footer class="w-full">
             <div class="max-w-screen-custom mx-auto pb-5 -mt-10">

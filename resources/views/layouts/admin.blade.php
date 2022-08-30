@@ -58,7 +58,7 @@
                                 </ul>
                                 <ul class="bg-white">
                                     <li>
-                                        <form action="https://kapnovelsyah.com/logout" method="POST">
+                                        <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button type="submit" class="flex items-center w-full px-4 py-3 transition-all duration-300 bg-red-500 hover:bg-red-700 text-white">
                                                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"></path><path d="M7 12h14l-3-3m0 6l3-3"></path></g></svg>
@@ -98,12 +98,6 @@
                                 <a href="{{ route('jadwal.index') }}" class="w-full h-full flex justify-center items-center">
                                     <iconify-icon icon="akar-icons:schedule" class="text-xl mr-2"></iconify-icon>
                                     <span>Jadwal penerbangan</span>
-                                </a>
-                            </th>
-                            <th style="min-width: 200px;" class="w-48 h-14 text-center transition-all duration-300 rounded-t-xl hover:bg-slate-50 border-b-2 {{ request()->routeIs('dashboard') ? 'bg-green-100 hover:bg-green-200 text-green-1000 border-green-1000' : 'text-slate-500' }}">
-                                <a href="{{ route('maskapai.index') }}" class="w-full h-full flex justify-center items-center">
-                                    <iconify-icon icon="ant-design:dashboard-outlined" class="text-xl mr-2"></iconify-icon>
-                                    <span>Tiket</span>
                                 </a>
                             </th>
                         </tr>

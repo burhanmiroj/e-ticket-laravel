@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkin;
 use App\Models\Jadwal;
 use App\Models\Maskapai;
 use App\Models\Order;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 
 class OrderController extends Controller
 {
     public function store(Request $request)
     {
+        Checkin::create([
+            'status' => false
+        ]);
+        $checkin_latest = Checkin::latest()->first();
+
         $order = Order::create([
+            'checkin_id' => $checkin_latest->id,
             'jadwal_id' => $request->jadwal_id,
             'nama_pemesan' => $request->nama_pemesan,
             'nomor_whatsapp' => $request->nomor_whatsapp,
@@ -35,44 +42,53 @@ class OrderController extends Controller
         $tanggal_pulang = $request->tanggal_pulang; 
         $jumlah_penumpang = $request->jumlah_penumpang; 
 
-        
-        // foreach ($jadwals as $jadwal) {
-        // }
-
         $query = Jadwal::whereDate('jadwal_keberangkatan', '=', Carbon::parse($request->tanggal_berangkat)->format('Y-m-d'))
-            // ->where('jadwal_pulang', '=', Carbon::parse($request->tanggal_pulang)->format('Y-m-d'))
             ->where('kota_asal', '=', $request->kota_asal)
             ->where('kota_tujuan', '=', $request->kota_tujuan)
             ->where('kelas_penerbangan', '=', $request->kelas_penerbangan)
             ->limit(1)
             ->get();
             
-        //  
-        $total_pay = $request->jumlah_penumpang * $request->harga_tiket;
+        $kode_booking = Order::latest()->first()->kode_booking;    
         
-        Alert::success('Berhasil', 'Berhasil memesan penerbangan!');
-
-        return view('print.confirm-print', compact(['order', 'query', 'kota_asal', 'kota_tujuan', 'kelas_penerbangan', 'tanggal_berangkat', 'tanggal_pulang', 'jumlah_penumpang', 'total_pay']));
+        return view('print.confirm-print', compact(['order', 'query', 'kota_asal', 'kota_tujuan', 'kelas_penerbangan', 'tanggal_berangkat', 'tanggal_pulang', 'jumlah_penumpang', 'kode_booking']));
     }
     
-    // public function success(Request $request)
-    // {
-    //     $harga_tiket = $request->harga_tiket;
-    //     // $total_harga = $request->harga_tiket ;
+    public function cekBooking(Request $request)
+    {
+        $order = Order::where('kode_booking', $request->kode_booking)->first();
 
-    //     return view('print.e-ticket', compact(['total_harga']));
-    // }
+        return view('checkin', compact(['order']));
+    }
+    
+    public function checkin(Request $request)
+    {
+        $checkin_id = Order::where('checkin_id', $request->checkin_id)->first();
+        
+        Checkin::where('id', $checkin_id->id)->update([
+            'status' => 1
+        ]);
+
+        Alert::success('Berhasil', 'Berhasil melakukan cekin!');
+
+        return redirect()->route('frontend.index');
+    }
     
     public function print(Request $request)
     {
-        $total_harga = $request->jumlah_penumpang * $request->harga_tiket;
-        $order = Order::latest()->first();
-        $maskapai = Maskapai::where('id', $request->maskapai_id)->first();
+        // $order = Order::where('checkin_id', $request->checkin_id)->first();
 
-        $pdf = Pdf::loadView('print.e-ticket', array('total_harga' => $total_harga, 'order'=> $order, 'maskapai' => $maskapai));        
+        // // dd($order);
+        // $pdf = PDF::loadView('print.e-ticket', compact('order'));        
     
-        // DOWNLOAD PDF 
-        return $pdf->download('e-ticket.pdf');
+        // // // DOWNLOAD PDF 
+        // // return $pdf->download('e-ticket.pdf');
+        // // view()->share('print.e-ticket', compact('order'));
+        // // $pdf = PDF::loadView('print.e-ticket', compact('order'));
+        // // // download PDF file with download method
+        // return $pdf->download('pdf_file.pdf');
+        $pdf = PDF::loadView('print.e-ticket');
+        return $pdf->download('invoice.pdf');
     }
 }
 

@@ -9,37 +9,37 @@
         body {
             font-family: sans-serif
         }
+        table tr {
+            padding-left: 1rem !important;
+        }
     </style>
 </head>
 <body>
+    @php
+        $data = \App\Models\Order::where('checkin_id', Request::has('checkin_id'))->get();
+    @endphp
     <p>E-tiket</p>
-    <div style="display: flex;">
-        <div style="display: flex;">
-            <img style="width: 100px;" src="{{ asset('storage/maskapai/'. $maskapai->logo_maskapai) }}" alt="">
-            <div style="margin-left: 1rem;">
-                <p>{{ $maskapai->nama_maskapai }}</p>
-                <p>{{ Str::upper($order->kelas_penerbangan) }}</p>
-            </div>
-        </div>
-    
-        <div style="margin-left: 3rem">
-            <p>{{ $order->nama_pemesan }}</p>
-            <p>{{ $order->nomor_whatsapp }}</p>
-        </div>
-    </div>
-    <div style="display: flex; aligh-items: center; margin-top: 3rem;">
-        <div>
-            <p>Berangkat dari</p>
-            <p>{{ Str::upper($order->kota_asal) }}</p>
-        </div>
-        <div style="margin-left: 1rem;">
-            <p>Kota tujuan</p>
-            <p>{{ Str::upper($order->kota_tujuan) }}</p>
-        </div>
-    </div>
-    {{-- <p>Total pesanan : {{ number_format($total_harga) }}</p> --}}
-    {{-- @foreach ($maskapai as $m) --}}
-        {{-- {{ $maskapai->id }} --}}
-    {{-- @endforeach --}}
+    @foreach ($data as $d)
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama maskapai</th>
+                    <th>Nama pemesan</th>
+                    <th>Nomor Whatsapp</th>
+                    <th>Kode booking</th>
+                    <th>Kode kursi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ $d->jadwal->maskapai->nama_maskapai }}</td>
+                    <td>{{ $d->nama_pemesan }}</td>
+                    <td>{{ $d->nomor_whatsapp }}</td>
+                    <td>{{ $d->kode_booking }}</td>
+                    <td>K-{{ $d->jadwal->jumlah_kursi - $d->jumlah_penumpang }}</td>
+                </tr>    
+            </tbody> 
+        </table>
+    @endforeach
 </body>
 </html>

@@ -10,6 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+        'checkin_id',
         'jadwal_id',
         'nama_pemesan',
         'nomor_whatsapp',
@@ -25,6 +26,12 @@ class Order extends Model
     public function jadwal()
     {
         return $this->belongsTo(Jadwal::class);
+    }
+
+    
+    public function checkin()
+    {
+        return $this->belongsTo(Checkin::class);
     }
 
 }

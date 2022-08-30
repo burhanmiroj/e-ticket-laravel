@@ -21,9 +21,10 @@
                         {{-- INPUT --}}
                         <select required name="kota_asal" id="kota_asal" class="w-full border-none shadow-none outline-none text-sm cursor-pointer">
                             <option  @if (old('kota_asal') == "") {{ 'selected' }} @endif disabled>-- Pilih kota asal</option>
-                            <option value="semarang" @if ( old('kota_asal') == "semarang") {{ 'selected' }} @endif>Semarang</option>
-                            <option value="surabaya" @if ( old('kota_asal') == "surabaya") {{ 'selected' }} @endif>Surabaya</option>
-                            <option value="jakarta" @if ( old('kota_asal') == "jakarta") {{ 'selected' }} @endif>Jakarta</option>
+                            <option value="bandung" @if ( old('kota_asal') == "Bandung") {{ 'selected' }} @endif>Bandung</option>
+                            <option value="Semarang" @if ( old('kota_asal') == "Semarang") {{ 'selected' }} @endif>Semarang</option>
+                            <option value="Surabaya" @if ( old('kota_asal') == "Surabaya") {{ 'selected' }} @endif>Surabaya</option>
+                            <option value="Jakarta" @if ( old('kota_asal') == "Jakarta") {{ 'selected' }} @endif>Jakarta</option>
                         </select>
                     </div>
                 </div>
@@ -37,9 +38,10 @@
                         {{-- INPUT --}}
                         <select required name="kota_tujuan" id="kota_tujuan" class="w-full border-none shadow-none outline-none text-sm cursor-pointer">
                             <option  @if (old('kota_tujuan') == "") {{ 'selected' }} @endif disabled>-- Pilih kota tujuan</option>
-                            <option value="semarang" @if ( old('kota_tujuan') == "semarang")  {{ "selected" }} @endif>Semarang</option>
-                            <option value="surabaya" @if ( old('kota_tujuan') == "surabaya") {{ 'selected' }} @endif>Surabaya</option>
-                            <option value="jakarta" @if ( old('kota_tujuan') == "jakarta")  {{ "selected" }} @endif>Jakarta</option>
+                            <option value="bandung" @if ( old('kota_tujuan') == "Bandung")  {{ "selected" }} @endif>Bandung</option>
+                            <option value="Semarang" @if ( old('kota_tujuan') == "Semarang")  {{ "selected" }} @endif>Semarang</option>
+                            <option value="Surabaya" @if ( old('kota_tujuan') == "Surabaya") {{ 'selected' }} @endif>Surabaya</option>
+                            <option value="Jakarta" @if ( old('kota_tujuan') == "Jakarta")  {{ "selected" }} @endif>Jakarta</option>
                         </select>
                     </div>
                 </div>
@@ -108,6 +110,20 @@
             </div>
             
         </form>
+        <div class="w-full flex flex-col items-center justify-center py-10 rounded-lg bg-slate-200 mt-10">
+            <h1 class="text-lg font-bold">Check in</h1>
+            <form action="{{ route('frontend.cek-booking') }}" method="POST" class="flex flex-col items-center space-y-5">
+                @csrf
+                <input type="text" name="kode_booking" placeholder="Masukkan kode booking" class="p-3 placeholder-slate-400 text-slate-600 relative bg-white rounded-md text-sm focus:outline-none border-slate-300 focus:border-green-1000 w-96 max-w-md mx-auto" />
+                {{-- SUBMIT BUTTON --}}
+                <button type="submit" class="w-full sm:w-40 pr-5 h-11 transition-all rounded-md bg-gradient-to-tr from-green-1000 to-green-1100 hover:to-green-1000 focus:ring-2 focus:ring-green-400 text-white flex justify-center items-center">
+                    <div class="w-12 h-11 grid place-items-center">
+                        <iconify-icon icon="akar-icons:search" class="text-xl"></iconify-icon>
+                    </div>
+                    <span class="text-sm">Cek kode</span>
+                </button>
+            </form>
+        </div>
         <hr class="mt-10" />
         {{-- MASKAPAI --}}
         <div class="w-full mt-10">

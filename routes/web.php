@@ -21,12 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 Route::post('/search-flight', [FrontendController::class, 'search'])->name('frontend.search');
 Route::post('/booking/create-ticket', [OrderController::class, 'store'])->name('frontend.booking');
-// Route::post('/booking/create-ticket/success', [OrderController::class, 'success'])->name('frontend.order-success');
-Route::post('/booking/create-ticket/success/print-pdf', [OrderController::class, 'print'])->name('frontend.print-ticket');
-
-// Route::get('/bp', function() {
-//     return view('print.e-ticket');
-// });
+Route::post('/booking/check-status', [OrderController::class, 'cekBooking'])->name('frontend.cek-booking');
+Route::post('/booking/checkin', [OrderController::class, 'checkin'])->name('frontend.cekin');
+Route::get('/booking/create-ticket/success/print-pdf', [OrderController::class, 'print'])->name('frontend.print-ticket');
+Route::get('/bp', function() {
+    return view('print.e-ticket');
+});
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
