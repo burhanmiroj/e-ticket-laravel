@@ -25,4 +25,9 @@ class Jadwal extends Model
         return $this->belongsTo(Maskapai::class);
     }
 
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

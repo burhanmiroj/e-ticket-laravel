@@ -22,4 +22,9 @@ class Order extends Model
         'kode_booking',
     ];
 
+    public function jadwal()
+    {
+        return $this->belongsTo(Jadwal::class);
+    }
+
 }

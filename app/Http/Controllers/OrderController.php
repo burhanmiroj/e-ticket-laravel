@@ -69,15 +69,8 @@ class OrderController extends Controller
         $order = Order::latest()->first();
         $maskapai = Maskapai::where('id', $request->maskapai_id)->first();
 
-        // return view('print.e-ticket', compact(['total_harga', 'order', 'maskapai']));
-        // dd($order);
-
-        // dd($order_id);
-        // $order = Order::where('id', $order_id)->get();
-
-        $pdf = Pdf::loadView('print.e-ticket', [$total_harga, $order, $maskapai]);
-        
-        
+        $pdf = Pdf::loadView('print.e-ticket', array('total_harga' => $total_harga, 'order'=> $order, 'maskapai' => $maskapai));        
+    
         // DOWNLOAD PDF 
         return $pdf->download('e-ticket.pdf');
     }

@@ -15,13 +15,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('jadwal_id');
             $table->string('nama_pemesan');
+            $table->string('nomor_whatsapp');
             $table->string('kota_asal');
             $table->string('kota_tujuan');
             $table->date('tanggal_berangkat');
             $table->date('tanggal_pulang');
             $table->string('kelas_penerbangan');
             $table->integer('jumlah_penumpang');
+            $table->string('kode_booking');
             $table->timestamps();
         });
     }
