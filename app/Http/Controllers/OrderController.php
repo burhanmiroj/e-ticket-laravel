@@ -76,19 +76,8 @@ class OrderController extends Controller
     
     public function print(Request $request)
     {
-        // $order = Order::where('checkin_id', $request->checkin_id)->first();
-
-        // // dd($order);
-        // $pdf = PDF::loadView('print.e-ticket', compact('order'));        
-    
-        // // // DOWNLOAD PDF 
-        // // return $pdf->download('e-ticket.pdf');
-        // // view()->share('print.e-ticket', compact('order'));
-        // // $pdf = PDF::loadView('print.e-ticket', compact('order'));
-        // // // download PDF file with download method
-        // return $pdf->download('pdf_file.pdf');
         $pdf = PDF::loadView('print.e-ticket');
-        return $pdf->download('invoice.pdf');
+        return $pdf->download('boarding-pass.pdf');
     }
 }
 
