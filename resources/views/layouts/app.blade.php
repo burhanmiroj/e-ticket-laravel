@@ -22,7 +22,7 @@
         <nav class="w-full px-4">
             <div class="w-full h-24 max-w-screen-custom mx-auto flex justify-between items-center">
                 {{-- LOGO --}}
-                <h1>LOGO</h1>
+                <img src="{{ asset('logo.jpeg') }}" class="w-20" alt="">
                 {{-- NAV UL --}}
                 <ul class="w-full flex justify-end items-center space-x-5 text-center">
                     <li>

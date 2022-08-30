@@ -75,7 +75,8 @@ class OrderController extends Controller
         // dd($order_id);
         // $order = Order::where('id', $order_id)->get();
 
-        $pdf = Pdf::loadView('print.e-ticket', compact(['total_harga', 'order', 'maskapai']));
+        $pdf = Pdf::loadView('print.e-ticket', [$total_harga, $order, $maskapai]);
+        
         
         // DOWNLOAD PDF 
         return $pdf->download('e-ticket.pdf');

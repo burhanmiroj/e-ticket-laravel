@@ -3,7 +3,7 @@
     <div class="w-full max-w-screen-custom mx-auto bg-white rounded-md shadow-xl transform -translate-y-20 p-4 md:p-10">
         {{-- HEADING --}}
         <div class="py-5 md:py-0">
-            <h1 class="text-xl md:text-2xl font-bold">Travelgo</h1>
+            <h1 class="text-xl md:text-2xl font-bold">Divis airline</h1>
             <p>Pesan tiket pesawat mudah disini</p>
         </div>
         {{-- CONTENT --}}
