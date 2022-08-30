@@ -21,19 +21,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 Route::post('/search-flight', [FrontendController::class, 'search'])->name('frontend.search');
 Route::post('/booking/create-ticket', [OrderController::class, 'store'])->name('frontend.booking');
-// Route::post('/search-flight', [FrontendController::class, 'searchPage'])->name('frontend.search-flight');
+// Route::post('/booking/create-ticket/success', [OrderController::class, 'success'])->name('frontend.order-success');
+Route::post('/booking/create-ticket/success/print-pdf', [OrderController::class, 'print'])->name('frontend.print-ticket');
+
+// Route::get('/bp', function() {
+//     return view('print.e-ticket');
+// });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('/dashboard/maskapai', MaskapaiController::class);
     Route::resource('/dashboard/penerbangan/jadwal', JadwalPenerbanganController::class);
 });
-
-// Route::middleware(['auth', 'role:admin|visitor'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-
 
 require __DIR__.'/auth.php';

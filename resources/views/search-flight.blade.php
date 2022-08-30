@@ -60,17 +60,32 @@
         <div class="w-full rounded-lg mt-5">
             <form action="{{ route('frontend.booking') }}" method="POST" class="pt-5">
                 @csrf
-                {{-- NAMA PEMESAN --}}
-                <div class="w-full">
-                    <label for="nama_pemesan" class="text-sm text-zinc-500 font-semibold">Nama pemesan</label>
-                    <div class="relative flex w-full flex-wrap mt-1">
-                        <span class="z-10 h-full leading-snug font-normal text-center text-slate-500 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                            <iconify-icon icon="ant-design:user-outlined" class="-mb-0.5"></iconify-icon>
-                        </span>
-                        <input required type="text" name="nama_pemesan" placeholder="Nama pemesan" class="p-3 placeholder-slate-400 text-slate-600 relative bg-white rounded text-sm focus:outline-none border-slate-300 focus:border-green-1000 w-full pl-10" />
-                        @error('nama_pemesan')
-                            <span class="text-sm italic text-red-500">{{ $message }}</span>
-                        @enderror
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {{-- NAMA PEMESAN --}}
+                    <div class="w-full">
+                        <label for="nama_pemesan" class="text-sm text-zinc-500 font-semibold">Nama pemesan</label>
+                        <div class="relative flex w-full flex-wrap mt-1">
+                            <span class="z-10 h-full leading-snug font-normal text-center text-slate-500 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                                <iconify-icon icon="ant-design:user-outlined" class="-mb-0.5"></iconify-icon>
+                            </span>
+                            <input required type="text" name="nama_pemesan" placeholder="Nama pemesan" class="p-3 placeholder-slate-400 text-slate-600 relative bg-white rounded text-sm focus:outline-none border-slate-300 focus:border-green-1000 w-full pl-10" />
+                            @error('nama_pemesan')
+                                <span class="text-sm italic text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    {{-- NOMOR WHATSAPP --}}
+                    <div class="w-full">
+                        <label for="nomor_whatsapp" class="text-sm text-zinc-500 font-semibold">Nomor whatsapp</label>
+                        <div class="relative flex w-full flex-wrap mt-1">
+                            <span class="z-10 h-full leading-snug font-normal text-center text-slate-500 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                                <iconify-icon icon="bi:whatsapp" class="-mb-0.5"></iconify-icon>
+                            </span>
+                            <input required type="text" name="nomor_whatsapp" placeholder="Nomor whatsapp" class="p-3 placeholder-slate-400 text-slate-600 relative bg-white rounded text-sm focus:outline-none border-slate-300 focus:border-green-1000 w-full pl-10" />
+                            @error('nomor_whatsapp')
+                                <span class="text-sm italic text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="py-5 my-5">

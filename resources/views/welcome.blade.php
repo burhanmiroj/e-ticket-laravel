@@ -93,7 +93,7 @@
                             <iconify-icon icon="fluent:people-12-regular" class="text-2xl"></iconify-icon>
                         </div>
                         {{-- INPUT --}}
-                        <input type="number" min="1" max="100" name="jumlah_penumpang" id="jumlah_penumpang" class="w-full border-none shadow-none outline-none text-sm cursor-pointer" placeholder="Masukkan jumlah penumpang" />
+                        <input required type="number" min="1" max="100" name="jumlah_penumpang" id="jumlah_penumpang" class="w-full border-none shadow-none outline-none text-sm cursor-pointer" placeholder="Masukkan jumlah penumpang" />
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@ class Order extends Model
     protected $fillable = [
         'jadwal_id',
         'nama_pemesan',
+        'nomor_whatsapp',
         'kota_asal',
         'kota_tujuan',
         'tanggal_berangkat',
@@ -20,4 +21,5 @@ class Order extends Model
         'jumlah_penumpang',
         'kode_booking',
     ];
+
 }

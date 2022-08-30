@@ -24,4 +24,5 @@ class Jadwal extends Model
     public function maskapai() {
         return $this->belongsTo(Maskapai::class);
     }
+
 }
