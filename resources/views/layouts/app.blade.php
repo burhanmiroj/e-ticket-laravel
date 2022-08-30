@@ -20,9 +20,11 @@
     {{-- START : HEADER --}}
     <header class="w-full h-72 bg-gradient-to-tr from-green-1000 to-green-1100">
         <nav class="w-full px-4">
-            <div class="w-full h-24 max-w-screen-custom mx-auto flex justify-between items-center">
+            <div class="w-full h-28 max-w-screen-custom mx-auto flex justify-between items-center">
                 {{-- LOGO --}}
-                <img src="{{ asset('logo.jpeg') }}" class="w-20" alt="">
+                <a href="{{ route('frontend.index') }}" class="w-14 bg-white p-2 rounded-md">
+                    <img src="{{ asset('logo.png') }}" class="w-full" alt="">
+                </a>
                 {{-- NAV UL --}}
                 <ul class="w-full flex justify-end items-center space-x-5 text-center">
                     <li>
