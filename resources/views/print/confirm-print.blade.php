@@ -2,9 +2,12 @@
 @section('content')
     <div class="w-full max-w-screen-custom mx-auto bg-white rounded-md shadow-xl transform -translate-y-20 p-4 md:p-10">
         {{-- HEADING --}}
-        <div class="py-5 md:py-0">
-            <h1 class="text-xl md:text-2xl font-bold">Kode booking</h1>
-            <p>SIlahkan copy kode ini, kode digunakan ketika check-in</p>
+        <div class="w-full flex justify-between">
+            <img src="{{ asset('logo.png') }}" class="w-12" alt="">
+            <div class="py-5 md:py-0">
+                <h1 class="text-xl md:text-2xl font-bold">E-Ticket</h1>
+                <p>Divis airlines</p>
+            </div>
         </div>
         {{-- CONTENT --}}
         {{-- <form action="{{ route('frontend.print-ticket') }}" method="POST" class="w-full border border-zinc-300 rounded-md p-4 mt-4 md:mt-10"> --}}
@@ -13,7 +16,7 @@
                 <table class="w-full whitespace-nowrap table-auto">
                     <tbody class="bg-white dark:divide-slate-700">
                         @forelse ($query as $q)
-                            <tr class="text-slate-700 whitespace-nowrap rounded-lg">
+                            <tr class="text-slate-700 whitespace-nowrap rounded-lg border">
                                 {{-- LOGO --}}
                                 <td class="px-4 py-3 text-sm">
                                     <div class="w-full flex items-center space-x-5">
@@ -27,7 +30,7 @@
                                     </div>
                                 </td>
                                 {{-- JADWAL KEBERANGKATAN --}}
-                                <td class="px-4 py-3 text-sm flex flex-col space-y-1">
+                                <td class="px-4 py-3 text-sm flex flex-col space-y-1 mt-3">
                                     <div class="flex space-x-2">
                                         <iconify-icon icon="ic:baseline-flight-takeoff" class="text-lg"></iconify-icon>
                                         <span class="text-xs"><span class="font-bold text-green-1000">{{ $q->kota_asal }}</span> {{ \Carbon\Carbon::parse($q->jadwal_keberangkatan)->format('d-m-Y h:m') }}</span>
@@ -65,9 +68,19 @@
                                     </div>
                                     <span class="text-sm font-semibold text-red-500">Salin kode ini, kode ini digunakan untuk check in</span>
                                 </div>
-                                <div class="w-full flex justify-center mt-5 mb-10">
+                                <div class="w-full flex justify-center space-x-3 mt-5 mb-10">
                                     {{-- BACK BUTTON --}}
-                                    <a href="{{ route('frontend.index') }}" class="w-full sm:w-48 pr-5 h-11 transition-all rounded-md bg-gradient-to-tr from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-600 focus:ring-2 focus:ring-slate-400 text-white flex justify-center items-center">
+                                    <form action="{{ route('frontend.print-ticket') }}">
+                                        @csrf
+                                        <button type="submit" class="w-full sm:w-48 pr-5 h-11 transition-all rounded-md bg-gradient-to-tr from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-600 focus:ring-2 focus:ring-blue-400 text-white flex justify-center items-center">
+                                            <div class="w-12 h-11 grid place-items-center">
+                                                <iconify-icon icon="fluent:print-16-regular" class="text-xl"></iconify-icon>
+                                            </div>
+                                            <span class="text-sm">Print tiket</span>
+                                        </button>
+                                    </form>
+                                    {{-- BACK BUTTON --}}
+                                    <a href="{{ route('frontend.print-ticket') }}" class="w-full sm:w-48 pr-5 h-11 transition-all rounded-md bg-gradient-to-tr from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-600 focus:ring-2 focus:ring-slate-400 text-white flex justify-center items-center">
                                         <div class="w-12 h-11 grid place-items-center">
                                             <iconify-icon icon="akar-icons:arrow-back" class="text-xl"></iconify-icon>
                                         </div>

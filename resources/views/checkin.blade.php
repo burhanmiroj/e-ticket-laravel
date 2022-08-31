@@ -88,7 +88,7 @@
                             </button>
                         </form>
                     @else
-                        <form action="{{ route('frontend.print-ticket') }}" class="w-full flex flex-col items-center">
+                        <form action="{{ route('frontend.print-bp') }}" class="w-full flex flex-col items-center">
                             @csrf
                             <input type="hidden" name="checkin_id" value="{{ $order->checkin->id }}">
                             <div class="w-96 text-center rounded-lg bg-green-200 text-green-700 font-semibold border border-green-500 py-4">

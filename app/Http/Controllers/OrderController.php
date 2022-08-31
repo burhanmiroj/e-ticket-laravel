@@ -74,10 +74,16 @@ class OrderController extends Controller
         return redirect()->route('frontend.index');
     }
     
-    public function print(Request $request)
+    public function printBp(Request $request)
+    {
+        $pdf = PDF::loadView('print.boarding-pass');
+        return $pdf->download('boarding-pass.pdf');
+    }
+    
+    public function printTicket(Request $request)
     {
         $pdf = PDF::loadView('print.e-ticket');
-        return $pdf->download('boarding-pass.pdf');
+        return $pdf->download('e-ticket.pdf');
     }
 }
 

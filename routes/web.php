@@ -23,7 +23,8 @@ Route::post('/search-flight', [FrontendController::class, 'search'])->name('fron
 Route::post('/booking/create-ticket', [OrderController::class, 'store'])->name('frontend.booking');
 Route::post('/booking/check-status', [OrderController::class, 'cekBooking'])->name('frontend.cek-booking');
 Route::post('/booking/checkin', [OrderController::class, 'checkin'])->name('frontend.cekin');
-Route::get('/booking/create-ticket/success/print-pdf', [OrderController::class, 'print'])->name('frontend.print-ticket');
+Route::get('/booking/create-boarding-pass/success/print-pdf', [OrderController::class, 'printBp'])->name('frontend.print-bp');
+Route::get('/booking/create-ticket/success/print-pdf', [OrderController::class, 'printTicket'])->name('frontend.print-ticket');
 // Route::get('/bp', function() {
 //     return view('print.e-ticket');
 // });
