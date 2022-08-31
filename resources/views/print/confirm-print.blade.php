@@ -4,11 +4,11 @@
         {{-- HEADING --}}
         <div class="py-5 md:py-0">
             <h1 class="text-xl md:text-2xl font-bold">Kode booking</h1>
-            <p>Mohon simpan kode ini dengan baik, kode digunakan ketika check-in</p>
+            <p>SIlahkan copy kode ini, kode digunakan ketika check-in</p>
         </div>
         {{-- CONTENT --}}
-        <form action="{{ route('frontend.print-ticket') }}" method="POST" class="w-full border border-zinc-300 rounded-md p-4 mt-4 md:mt-10">
-            @csrf
+        {{-- <form action="{{ route('frontend.print-ticket') }}" method="POST" class="w-full border border-zinc-300 rounded-md p-4 mt-4 md:mt-10"> --}}
+            {{-- @csrf --}}
             <div class="custom-horizontal-scrollbar w-full overflow-x-auto mb-5">
                 <table class="w-full whitespace-nowrap table-auto">
                     <tbody class="bg-white dark:divide-slate-700">
@@ -59,11 +59,20 @@
                             <input type="hidden" name="harga_tiket" value="{{ $q->harga_tiket }}">
                             {{-- KODE PESAN --}}
                             <tr>
-                                <div class="mt-5 mb-10 text-center">
+                                <div class="mt-10 text-center">
                                     <div class="w-full p-3 border rounded-lg max-w-screen-md mx-auto text-xl text-center bg-slate-200">
                                         <h1>{{ $kode_booking }}</h1>
                                     </div>
-                                    <span class="text-sm font-semibold text-red-500">Simpan dengan baik, kode ini digunakan untuk check in</span>
+                                    <span class="text-sm font-semibold text-red-500">Salin kode ini, kode ini digunakan untuk check in</span>
+                                </div>
+                                <div class="w-full flex justify-center mt-5 mb-10">
+                                    {{-- BACK BUTTON --}}
+                                    <a href="{{ route('frontend.index') }}" class="w-full sm:w-48 pr-5 h-11 transition-all rounded-md bg-gradient-to-tr from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-600 focus:ring-2 focus:ring-slate-400 text-white flex justify-center items-center">
+                                        <div class="w-12 h-11 grid place-items-center">
+                                            <iconify-icon icon="akar-icons:arrow-back" class="text-xl"></iconify-icon>
+                                        </div>
+                                        <span class="text-sm">Halaman utama</span>
+                                    </a>
                                 </div>
                             </tr>
                         @empty
@@ -72,7 +81,7 @@
                     </tbody>
                 </table>
             </div>
-        </form>
+        {{-- </form> --}}
     </div>
 @endsection
 

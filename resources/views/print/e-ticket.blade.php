@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>E- tiket</title>
+    <title>Boarding pass</title>
     <style>
         body {
             font-family: sans-serif
@@ -47,7 +47,7 @@
                 <thead>
                     <tr>
                         <th style="text-align: left;">Nama</th>
-                        <th style="text-align: left; padding-left: 1rem;">Nomor Whatsapp</th>
+                        <th style="text-align: left; padding-left: 1rem;">GATE</th>
                         <th style="text-align: left; padding-left: 1rem;">Kode booking</th>
                         <th style="text-align: left; padding-left: 1rem;">Kode kursi</th>
                     </tr>
@@ -55,7 +55,7 @@
                 <tbody>
                     <tr>
                         <td style="text-align: left;">{{ $d->nama_pemesan }}</td>
-                        <td style="text-align: left; padding-left: 1rem;">{{ $d->nomor_whatsapp }}</td>
+                        <td style="text-align: left; padding-left: 1rem;">GATE-{{ $d->jadwal->id + 1 }}</td>
                         <td style="text-align: left; padding-left: 1rem;">{{ $d->kode_booking }}</td>
                         <td style="text-align: left; padding-left: 1rem;">K-{{ $d->jadwal->jumlah_kursi - $d->jumlah_penumpang }}</td>
                     </tr>    
