@@ -3,8 +3,8 @@
     <div class="w-full max-w-screen-custom mx-auto bg-white rounded-md shadow-xl transform -translate-y-20 p-4 md:p-10">
         {{-- HEADING --}}
         <div class="py-5 md:py-0">
-            <h1 class="text-xl md:text-2xl font-bold">Print tiket anda</h1>
-            <p>Print tiket, simpan kode booking dengan baik</p>
+            <h1 class="text-xl md:text-2xl font-bold">Kode booking</h1>
+            <p>Mohon simpan kode ini dengan baik, kode digunakan ketika check-in</p>
         </div>
         {{-- CONTENT --}}
         <form action="{{ route('frontend.print-ticket') }}" method="POST" class="w-full border border-zinc-300 rounded-md p-4 mt-4 md:mt-10">
